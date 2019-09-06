@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Compiler</title>
+</head>
+<script type="text/javascript">
+	var codeC;
+	var declare = [];
+	function runcode() {
+		codeC = "#include<stdio.h> \nint main() {\n";
+		document.getElementById("codeC").innerHTML = "";
+		var textArea = document.getElementById('textCode');
+		var lines = textArea.value.split('\n');    // lines is an array of strings
+
+		console.log(lines);
+		// Loop through all lines
+		for (let i = 0; i < lines.length; i++) {
+			var words = lines[i].split(" ");
+			for (let j = 1; j < words.length; j++) {
+				if (notExit(words[j])) {
+					codeC = codeC.concat('int ', words[j]) + ';\n';
+					declare.push(words[j]);
+				};
+			};
+			console.log(words)
+		};
+
+		for (let i = 0; i < lines.length; i++) {
+			words = lines[i].split(" ");
+			
+			if (words[0] == "INPUT") {
+				for (let j = 1; j < words.length; j++) {
+					codeC = codeC.concat('printf("Enter ', words[j], ' ="; scanf("%d", &', words[j], ');\n');
+				};
+			};
+
+			if (words[0] == "ADD") {
+				codeC = codeC.concat(words[1], ' = ', words[2], ' + ', words[3], ';\n');
+			};
+
+			if (words[0] == "SUB") {
+				codeC = codeC.concat(words[1], ' = ', words[2], ' - ', words[3], ';\n');
+			};
+
+			if (words[0] == "MUL") {
+				codeC = codeC.concat(words[1], ' = ', words[2], ' * ', words[3], ';\n');
+			};
+
+			if (words[0] == "DIV") {
+				codeC = codeC.concat(words[1], ' = ', words[2], ' / ', words[3], ';\n');
+			};
+
+			if (words[0] == "OUTPUT") {
+
+			};
+		};
+
+		for (let i = 1; i < lines.length - 1; i++) {
+			words = lines[i].split(" ");
+			codeC = codeC.concat('printf("Result ', words[1], ' = %d, ', words[1], ');\n');
+		}
+		codeC = codeC.concat('return 0;' + '\n}');
+		document.getElementById("codeC").innerHTML = codeC;
+	};
+
+	function notExit(word) {
+		for (let i = 0; i < declare.length; i++) {
+			if (word == declare[i]) {
+				return false;
+			};
+		};
+		return true;
+	};
+
+</script>
+
+<body>
+	<textarea id="textCode" rows="10" cols="50" name="comment" form="usrform">
+INPUT x y z
+ADD a x y
+SUB b y z
+MUL c x z
+DIV d a b
+OUTPUT a b c d</textarea> <br>
+
+	<button onclick="runcode()">Convert</button> <br>
+
+	<textarea name="" id="codeC" rows="30" cols="50"></textarea>
+</body>
+
+</html>
