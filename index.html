@@ -6,8 +6,9 @@
 </head>
 <script type="text/javascript">
 	var codeC;
-	var declare = [];
+	var declareCode = [];
 	function runcode() {
+		declareCode = [];
 		codeC = "#include<stdio.h> \nint main() {\n";
 		document.getElementById("codeC").innerHTML = "";
 		var textArea = document.getElementById('textCode');
@@ -20,7 +21,7 @@
 			for (let j = 1; j < words.length; j++) {
 				if (notExit(words[j])) {
 					codeC = codeC.concat('int ', words[j]) + ';\n';
-					declare.push(words[j]);
+					declareCode.push(words[j]);
 				};
 			};
 			console.log(words)
@@ -65,17 +66,18 @@
 	};
 
 	function notExit(word) {
-		for (let i = 0; i < declare.length; i++) {
-			if (word == declare[i]) {
+		for (let i = 0; i < declareCode.length; i++) {
+			if (word == declareCode[i]) {
 				return false;
 			};
 		};
 		return true;
 	};
-
 </script>
 
 <body>
+	<h3>Name: Le Quang Huy - ID: 1611260</h3>
+	<!-- <h3>ID: 1611260</h3> -->
 	<textarea id="textCode" rows="10" cols="50" name="comment" form="usrform">
 INPUT x y z
 ADD a x y
