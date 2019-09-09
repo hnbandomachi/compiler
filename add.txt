@@ -1,0 +1,6 @@
+INPUT x y z
+ADD a x y
+SUB b y z
+MUL c x z
+DIV d a b
+OUTPUT a b c d
