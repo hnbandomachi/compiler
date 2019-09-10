@@ -32,7 +32,7 @@
 			
 			if (words[0] == "INPUT") {
 				for (let j = 1; j < words.length; j++) {
-					codeC = codeC.concat('printf("Enter ', words[j], ' ="; scanf("%d", &', words[j], ');\n');
+					codeC = codeC.concat('printf("Enter ', words[j], ' ="); scanf("%d", &', words[j], ');\n');
 				};
 			};
 
