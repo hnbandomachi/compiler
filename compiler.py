@@ -41,7 +41,6 @@ def main():
     for i in range(1, len(lines) - 1):
         words = lines[i].replace('\n', '').split(" ")
         codeC = codeC + 'printf("Result ' + words[1] + ' = %d ", ' + words[1] + ' );\n'
-
     codeC = codeC + 'system("pause");\n}'
 
     fileC = open("compiler.c", "w+")
