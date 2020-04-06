@@ -20,4 +20,5 @@ printf("Result b = %d ", b );
 printf("Result c = %d ", c );
 printf("Result d = %d ", d );
 system("pause");
+return 0;
 }
